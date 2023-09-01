@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_mng/app/data/repositories/user_repository.dart';
 import 'package:state_mng/app/domain/providers/user_provider.dart';
-import 'package:state_mng/app/ui/pages/realtime/person_add_realtime.dart';
-import 'package:state_mng/app/ui/pages/realtime/person_list_realtime.dart';
+import 'package:state_mng/app/ui/pages/realtime/person_add.dart';
+import 'package:state_mng/app/ui/pages/realtime/person_list.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView._();
