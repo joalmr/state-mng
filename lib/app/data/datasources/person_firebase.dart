@@ -26,14 +26,6 @@ class PersonFirebase implements PersonRepository {
   }
 
   @override
-  Future<List<Person>> getPerson() async {
-    final querySnapshot = await personRef.get();
-    final persons = querySnapshot.docs.map((e) => e.data()).toList();
-
-    return persons;
-  }
-
-  @override
   Future<Person> addPerson(Person person) async {
     final result = await personRef.add(person);
     return person.copyWith(id: result.id);

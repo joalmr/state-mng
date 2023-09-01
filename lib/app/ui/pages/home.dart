@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_mng/app/data/repositories/user_repository.dart';
 import 'package:state_mng/app/domain/providers/user_provider.dart';
-import 'package:state_mng/app/ui/pages/person_add.dart';
-import 'package:state_mng/app/ui/pages/person_list.dart';
+import 'package:state_mng/app/ui/pages/realtime/person_add_realtime.dart';
 import 'package:state_mng/app/ui/pages/realtime/person_list_realtime.dart';
 
 class HomeView extends StatefulWidget {
@@ -62,23 +61,10 @@ class _HomeViewState extends State<HomeView> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (_) =>
-                                        PersonListRealtimeView.init()),
-                              );
-                            },
-                      child: const Text("Lista personas realtime"),
-                    ),
-                    TextButton(
-                      onPressed: email == null
-                          ? null
-                          : () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
                                     builder: (_) => PersonListView.init()),
                               );
                             },
-                      child: const Text("Lista personas"),
+                      child: const Text("Lista personas realtime"),
                     ),
                     TextButton(
                       onPressed: email == null

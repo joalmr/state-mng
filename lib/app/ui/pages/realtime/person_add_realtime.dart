@@ -2,31 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_mng/app/data/repositories/person_repository.dart';
 import 'package:state_mng/app/domain/models/person_model.dart';
-import 'package:state_mng/app/domain/providers/person_provider_realtime.dart';
+import 'package:state_mng/app/domain/providers/person_provider.dart';
 
-class PersonAddRealtimeView extends StatefulWidget {
-  const PersonAddRealtimeView._();
+class PersonAddView extends StatefulWidget {
+  const PersonAddView._();
 
   static Widget init({Person? person}) => ChangeNotifierProvider(
         lazy: false,
-        create: (context) => PersonProviderRealtime(
+        create: (context) => PersonProvider(
           personRepository: context.read<PersonRepository>(),
           person: person,
         ),
-        child: const PersonAddRealtimeView._(),
+        child: const PersonAddView._(),
       );
 
   @override
-  State<PersonAddRealtimeView> createState() => _PersonAddViewState();
+  State<PersonAddView> createState() => _PersonAddViewState();
 }
 
-class _PersonAddViewState extends State<PersonAddRealtimeView> {
+class _PersonAddViewState extends State<PersonAddView> {
   final _controllerName = TextEditingController();
   final _controllerLastname = TextEditingController();
   final _controllerPhone = TextEditingController();
 
   Future<void> _loadInit() async {
-    final person = context.read<PersonProviderRealtime>().person;
+    final person = context.read<PersonProvider>().person;
     if (person != null) {
       _controllerName.text = person.name;
       _controllerLastname.text = person.lastname;
@@ -42,7 +42,7 @@ class _PersonAddViewState extends State<PersonAddRealtimeView> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<PersonProviderRealtime>(
+    return Consumer<PersonProvider>(
       builder: (context, provider, child) {
         return Scaffold(
           appBar: AppBar(),
@@ -79,7 +79,7 @@ class _PersonAddViewState extends State<PersonAddRealtimeView> {
                 lastname: _controllerLastname.text,
                 phone: _controllerPhone.text,
               );
-              await context.read<PersonProviderRealtime>().addPerson(newPerson);
+              await context.read<PersonProvider>().addPerson(newPerson);
               if (mounted) Navigator.pop(context);
             },
           ),

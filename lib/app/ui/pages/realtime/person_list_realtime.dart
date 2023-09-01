@@ -2,33 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_mng/app/data/repositories/person_repository.dart';
 import 'package:state_mng/app/domain/models/person_model.dart';
-import 'package:state_mng/app/domain/providers/person_provider_realtime.dart';
+import 'package:state_mng/app/domain/providers/person_provider.dart';
 import 'package:state_mng/app/ui/pages/realtime/person_add_realtime.dart';
 
-class PersonListRealtimeView extends StatefulWidget {
-  const PersonListRealtimeView._();
+class PersonListView extends StatefulWidget {
+  const PersonListView._();
 
   static Widget init() => ChangeNotifierProvider(
         lazy: false,
-        create: (context) => PersonProviderRealtime(
+        create: (context) => PersonProvider(
           personRepository: context.read<PersonRepository>(),
         ),
-        child: const PersonListRealtimeView._(),
+        child: const PersonListView._(),
       );
 
   @override
-  State<PersonListRealtimeView> createState() => _PersonListViewState();
+  State<PersonListView> createState() => _PersonListViewState();
 }
 
-class _PersonListViewState extends State<PersonListRealtimeView> {
+class _PersonListViewState extends State<PersonListView> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<PersonProviderRealtime>(
-        builder: (context, provider, child) {
+    return Consumer<PersonProvider>(builder: (context, provider, child) {
       return Scaffold(
         appBar: AppBar(),
         body: StreamBuilder<List<Person>>(
-          stream: context.read<PersonProviderRealtime>().loadStream(),
+          stream: context.read<PersonProvider>().loadStream(),
           builder: (context, snapshot) {
             if (!snapshot.hasData ||
                 snapshot.connectionState == ConnectionState.waiting) {
@@ -52,14 +51,11 @@ class _PersonListViewState extends State<PersonListRealtimeView> {
                     await Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) =>
-                              PersonAddRealtimeView.init(person: person),
+                          builder: (_) => PersonAddView.init(person: person),
                         ));
                   },
                   onLongPress: () {
-                    context
-                        .read<PersonProviderRealtime>()
-                        .deletePerson(person.id!);
+                    context.read<PersonProvider>().deletePerson(person.id!);
                   },
                   title: Text("${person.name} ${person.lastname}"),
                   subtitle: Text(person.phone),
@@ -74,7 +70,7 @@ class _PersonListViewState extends State<PersonListRealtimeView> {
             await Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => PersonAddRealtimeView.init(),
+                  builder: (_) => PersonAddView.init(),
                 ));
           },
         ),

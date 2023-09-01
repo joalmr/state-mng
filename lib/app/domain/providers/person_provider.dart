@@ -10,14 +10,7 @@ class PersonProvider extends ChangeNotifier {
   final PersonRepository personRepository;
   final Person? person;
 
-  List<Person>? persons;
-
   Stream<List<Person>> loadStream() => personRepository.getPersonStream();
-
-  Future<void> load() async {
-    persons = await personRepository.getPerson();
-    notifyListeners();
-  }
 
   Future<void> addPerson(Person newPerson) async {
     if (person != null) {
@@ -25,13 +18,9 @@ class PersonProvider extends ChangeNotifier {
     } else {
       await personRepository.addPerson(newPerson);
     }
-    // notifyListeners();
   }
 
   Future<void> deletePerson(String id) async {
     await personRepository.deletePerson(id);
-    // load();
-    persons?.removeWhere((element) => element.id == id);
-    notifyListeners();
   }
 }
