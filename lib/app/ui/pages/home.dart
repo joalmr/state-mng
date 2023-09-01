@@ -4,6 +4,7 @@ import 'package:state_mng/app/data/repositories/user_repository.dart';
 import 'package:state_mng/app/domain/providers/user_provider.dart';
 import 'package:state_mng/app/ui/pages/person_add.dart';
 import 'package:state_mng/app/ui/pages/person_list.dart';
+import 'package:state_mng/app/ui/pages/realtime/person_list_realtime.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView._();
@@ -33,7 +34,6 @@ class _HomeViewState extends State<HomeView> {
           body: SizedBox(
             width: double.maxFinite,
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 25),
@@ -62,8 +62,20 @@ class _HomeViewState extends State<HomeView> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (_) => PersonListView.init(),
-                                ),
+                                    builder: (_) =>
+                                        PersonListRealtimeView.init()),
+                              );
+                            },
+                      child: const Text("Lista personas realtime"),
+                    ),
+                    TextButton(
+                      onPressed: email == null
+                          ? null
+                          : () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => PersonListView.init()),
                               );
                             },
                       child: const Text("Lista personas"),
@@ -75,8 +87,7 @@ class _HomeViewState extends State<HomeView> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (_) => PersonAddView.init(),
-                                ),
+                                    builder: (_) => PersonAddView.init()),
                               );
                             },
                       child: const Text("Agregar persona"),

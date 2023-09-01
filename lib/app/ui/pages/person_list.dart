@@ -41,6 +41,7 @@ class _PersonListViewState extends State<PersonListView> {
                           MaterialPageRoute(
                             builder: (_) => PersonAddView.init(person: person),
                           ));
+                      //recarga
                       if (mounted) context.read<PersonProvider>().load();
                     },
                     onLongPress: () {
@@ -59,6 +60,7 @@ class _PersonListViewState extends State<PersonListView> {
                 MaterialPageRoute(
                   builder: (_) => PersonAddView.init(),
                 ));
+            //recarga
             if (mounted) context.read<PersonProvider>().load();
           },
         ),
