@@ -2,11 +2,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
-import 'package:state_mng/app/data/datasources/person_firebase.dart';
-import 'package:state_mng/app/data/datasources/user_firebase.dart';
-import 'package:state_mng/app/data/repositories/person_repository.dart';
-import 'package:state_mng/app/data/repositories/user_repository.dart';
-import 'package:state_mng/app/ui/pages/home.dart';
+import 'package:state_mng/app/person/data/person_firebase.dart';
+import 'package:state_mng/app/user/data/user_firebase.dart';
+import 'package:state_mng/app/person/domain/repositories/person_repository.dart';
+import 'package:state_mng/app/user/domain/repositories/user_repository.dart';
+import 'package:state_mng/app/user/ui/home.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

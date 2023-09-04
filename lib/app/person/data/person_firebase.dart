@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:state_mng/app/data/repositories/person_repository.dart';
-import 'package:state_mng/app/domain/models/person_model.dart';
+import 'package:state_mng/app/person/domain/repositories/person_repository.dart';
+import 'package:state_mng/app/person/domain/model/person_model.dart';
 
 class PersonFirebase implements PersonRepository {
   final personRef =

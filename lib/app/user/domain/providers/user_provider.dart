@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
-import 'package:state_mng/app/data/repositories/user_repository.dart';
+import 'package:state_mng/app/user/domain/repositories/user_repository.dart';
 
 class UserProvider extends ChangeNotifier {
   UserProvider({required this.userRepository});

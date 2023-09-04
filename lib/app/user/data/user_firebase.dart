@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:state_mng/app/data/repositories/user_repository.dart';
+import 'package:state_mng/app/user/domain/repositories/user_repository.dart';
 
 class UserFirebase implements UserRepository {
   @override

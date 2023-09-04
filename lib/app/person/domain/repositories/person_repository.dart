@@ -1,4 +1,4 @@
-import 'package:state_mng/app/domain/models/person_model.dart';
+import 'package:state_mng/app/person/domain/model/person_model.dart';
 
 abstract class PersonRepository {
   Stream<List<Person>> getPersonStream();

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:state_mng/app/data/repositories/person_repository.dart';
-import 'package:state_mng/app/domain/models/person_model.dart';
-import 'package:state_mng/app/domain/providers/person_provider.dart';
-import 'package:state_mng/app/ui/pages/realtime/person_add.dart';
+import 'package:state_mng/app/person/domain/repositories/person_repository.dart';
+import 'package:state_mng/app/person/domain/model/person_model.dart';
+import 'package:state_mng/app/person/domain/providers/person_provider.dart';
+import 'package:state_mng/app/person/ui/person_add.dart';
 
 class PersonListView extends StatefulWidget {
   const PersonListView._();

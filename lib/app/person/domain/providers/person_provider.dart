@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:state_mng/app/data/repositories/person_repository.dart';
-import 'package:state_mng/app/domain/models/person_model.dart';
+import 'package:state_mng/app/person/domain/repositories/person_repository.dart';
+import 'package:state_mng/app/person/domain/model/person_model.dart';
 
 class PersonProvider extends ChangeNotifier {
   PersonProvider({
